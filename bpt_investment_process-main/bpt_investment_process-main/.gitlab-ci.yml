@@ -1,0 +1,35 @@
+stages:
+  - validate
+  - deploy
+
+validate_bpmn:
+  stage: validate
+  image: node:latest
+  script:
+    - npm install -g bpmnlint
+    - npm i bpmnlint-plugin-camunda
+    - bpmnlint src/main.bpmn > validation-results.txt || true
+  artifacts:
+    paths:
+      - validation-results.txt
+    expire_in: 1 week
+  only:
+    - main
+    - develop
+
+#deploy:
+#  stage: deploy
+#  image: camunda/zeebe:latest
+#  services:
+#    - name: camunda/zeebe:latest
+#      alias: zeebe
+#  variables:
+#    ZEEBE_ADDRESS: "localhost:26500"
+#  script:
+#    - echo "Warte auf den Broker..."
+#    - sleep 10
+#    - zbctl --insecure --address $ZEEBE_ADDRESS deploy src/main.bpmn
+#  only:
+#    - main
+#    - develop
+

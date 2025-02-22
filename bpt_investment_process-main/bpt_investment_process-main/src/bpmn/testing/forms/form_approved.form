@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "label": "gesendete summe",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1t080ql",
+        "columns": null
+      },
+      "id": "Field_1hy8qkf",
+      "key": "textfield_summe_erhalten",
+      "description": "Hier steht die festgelegte summe",
+      "readonly": true,
+      "defaultValue": ""
+    },
+    {
+      "label": "Summe bestätigen?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_01nat8w",
+        "columns": null
+      },
+      "id": "Field_0it0hk1",
+      "key": "checkbox_summe_approved",
+      "defaultValue": false
+    }
+  ],
+  "type": "default",
+  "id": "Form_02g4qwv",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}

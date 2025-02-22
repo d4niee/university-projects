@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES2020",                                  /* Use modern JavaScript features */
+
+    /* Modules */
+    "module": "CommonJS",                                /* Ensure compatibility with Node.js */
+    "moduleResolution": "node",                         /* Proper module resolution for Node.js */
+    "baseUrl": "./",                                    /* Base directory for module resolution */
+    "paths": {
+      "@worker/*": ["src/worker"]                        /* Custom alias for worker module */
+    },
+
+    /* Output and Compilation */
+    "outDir": "./dist",                                 /* Specify output directory */
+    "rootDir": "./src",                                 /* Specify root directory */
+
+    /* Type Checking */
+    "strict": true,                                      /* Enable all strict type-checking options */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports */
+    "esModuleInterop": true,                             /* Allow default imports from CommonJS modules */
+    "resolveJsonModule": true,                           /* Allow importing JSON files */
+    "allowSyntheticDefaultImports": true,                /* Support default imports from modules without them */
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

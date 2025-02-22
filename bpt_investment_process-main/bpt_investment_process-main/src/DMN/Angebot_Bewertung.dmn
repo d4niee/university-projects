@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_offer_evaluation" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <decision id="Decision_offer_evaluation" name="Bewertung">
+    <informationRequirement id="InformationRequirement_09g71oj">
+      <requiredInput href="#InputData_04qq83r" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0ya8m9u">
+      <requiredInput href="#InputData_0lvgf6g" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_13eqoa9">
+      <requiredInput href="#InputData_1htodr8" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_16ed356" hitPolicy="COLLECT" aggregation="SUM">
+      <input id="Input_1" label="Preis">
+        <inputExpression id="InputExpression_1" typeRef="number">
+          <text>1 - (number_amount_offer / invest_amount)</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0e9pk4x" label="Lieferantenbewertung">
+        <inputExpression id="LiteralExpression_1svx38u" typeRef="number">
+          <text>supplier_rating</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1fz988n" label="Lieferdatum">
+        <inputExpression id="LiteralExpression_1a3yqtq" typeRef="dayTimeDuration">
+          <text>date and time(invest_date_delivery) - date and time(datetime_delivery_offer)</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Punkte" name="offer_points" typeRef="number" />
+      <rule id="DecisionRule_1kexwxw">
+        <inputEntry id="UnaryTests_1c8dy8a">
+          <text>&lt;0.05</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_134hyb4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0okad73">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0rtys8p">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0rikxgg">
+        <inputEntry id="UnaryTests_181sg2o">
+          <text>&lt;0.1</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0txh1t2">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lpu9yc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_103xo70">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wbp5lm">
+        <inputEntry id="UnaryTests_03czmkw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1s4lafr">
+          <text>&gt;4</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18q33j3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_08xc1b0">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09etwrd">
+        <inputEntry id="UnaryTests_09d03st">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0yzeukj">
+          <text>&gt;4.5</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k3t02t">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0e49mky">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w303c9">
+        <inputEntry id="UnaryTests_16l9d9n">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gkwnoo">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rhsnmt">
+          <text>&gt;duration("P14D")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xz3ob4">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0laxl1a">
+        <inputEntry id="UnaryTests_18dnkuw">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17ic8b0">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vip990">
+          <text>&gt;duration("P7D")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ukfvry">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_04qq83r" name="Preis" />
+  <inputData id="InputData_0lvgf6g" name="Lieferantenbewertung" />
+  <inputData id="InputData_1htodr8" name="Lieferdatum" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_offer_evaluation">
+        <dc:Bounds height="80" width="180" x="310" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1cxcgr0" dmnElementRef="InputData_04qq83r">
+        <dc:Bounds height="45" width="125" x="157" y="247" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0chnrdu" dmnElementRef="InputData_0lvgf6g">
+        <dc:Bounds height="45" width="125" x="337" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1q077rw" dmnElementRef="InformationRequirement_09g71oj">
+        <di:waypoint x="220" y="247" />
+        <di:waypoint x="355" y="200" />
+        <di:waypoint x="355" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0qtkoyr" dmnElementRef="InformationRequirement_0ya8m9u">
+        <di:waypoint x="400" y="248" />
+        <di:waypoint x="400" y="200" />
+        <di:waypoint x="400" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_17sl3ln" dmnElementRef="InputData_1htodr8">
+        <dc:Bounds height="45" width="125" x="507" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_19or820" dmnElementRef="InformationRequirement_13eqoa9">
+        <di:waypoint x="570" y="248" />
+        <di:waypoint x="445" y="200" />
+        <di:waypoint x="445" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

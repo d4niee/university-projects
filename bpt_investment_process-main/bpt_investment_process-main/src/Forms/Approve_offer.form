@@ -1,0 +1,124 @@
+{
+  "components": [
+    {
+      "text": "# Angebot",
+      "type": "text",
+      "layout": {
+        "row": "Row_0w2tpif",
+        "columns": null
+      },
+      "id": "Field_17i9cuc"
+    },
+    {
+      "text": "Datum: {{invest_date}}",
+      "type": "text",
+      "layout": {
+        "row": "Row_1gndlof",
+        "columns": null
+      },
+      "id": "Field_0w323px"
+    },
+    {
+      "text": "## Unternehmen: {{textfield_company}}\n",
+      "type": "text",
+      "layout": {
+        "row": "Row_02jggsh",
+        "columns": null
+      },
+      "id": "Field_0vzil44"
+    },
+    {
+      "label": "Artikel",
+      "components": [
+        {
+          "text": "###### Investition\n{{textfield_article_offe}}",
+          "type": "text",
+          "layout": {
+            "row": "Row_0kyxfbx",
+            "columns": 3
+          },
+          "id": "Field_17pyo81"
+        },
+        {
+          "text": "###### Beschreibung\n{{textarea_article_offer}}",
+          "type": "text",
+          "layout": {
+            "row": "Row_0kyxfbx",
+            "columns": null
+          },
+          "id": "Field_0qxz56r"
+        },
+        {
+          "text": "###### Anzahl\n{{number_number_offer}}",
+          "type": "text",
+          "layout": {
+            "row": "Row_0kyxfbx",
+            "columns": 3
+          },
+          "id": "Field_04daish"
+        },
+        {
+          "text": "###### Ausschreibungswert\n{{number_amount_offer}} €",
+          "type": "text",
+          "layout": {
+            "row": "Row_0kyxfbx",
+            "columns": null
+          },
+          "id": "Field_0lvceyl"
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_1a5cy2t",
+        "columns": null
+      },
+      "id": "Field_01wdt07"
+    },
+    {
+      "text": "## Lieferdatum\nDie Ware/Dienstleistung wird bis zum {{datetime_delivery_offer}} geliefert.",
+      "type": "text",
+      "layout": {
+        "row": "Row_0io3vtp",
+        "columns": null
+      },
+      "id": "Field_16l3e64"
+    },
+    {
+      "text": "## Kommentar\n{{textfield_comment}}",
+      "type": "text",
+      "layout": {
+        "row": "Row_0l8udgj",
+        "columns": null
+      },
+      "id": "Field_1su3fqd"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_1b3kpb6",
+        "columns": null
+      },
+      "id": "Field_0vtlnl7"
+    },
+    {
+      "label": "Angebot in Ordnung?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_117pq47",
+        "columns": null
+      },
+      "id": "Field_06p4wc5",
+      "key": "checkbox_approve_offer"
+    }
+  ],
+  "type": "default",
+  "id": "Form_approve_offer",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}

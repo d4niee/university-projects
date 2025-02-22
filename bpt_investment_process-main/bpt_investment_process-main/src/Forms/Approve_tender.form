@@ -1,0 +1,115 @@
+{
+  "components": [
+    {
+      "text": "# Ausschreibung",
+      "type": "text",
+      "layout": {
+        "row": "Row_0w2tpif",
+        "columns": null
+      },
+      "id": "Field_17i9cuc"
+    },
+    {
+      "text": "**Datum:** {{invest_date}}",
+      "type": "text",
+      "layout": {
+        "row": "Row_1gndlof",
+        "columns": null
+      },
+      "id": "Field_0w323px"
+    },
+    {
+      "label": "Artikel",
+      "components": [
+        {
+          "text": "###### Investition\n{{invest_name}}",
+          "type": "text",
+          "layout": {
+            "row": "Row_030fhd4",
+            "columns": 3
+          },
+          "id": "Field_1oabzyj"
+        },
+        {
+          "text": "###### Beschreibung\n{{invest_description}}",
+          "type": "text",
+          "layout": {
+            "row": "Row_030fhd4",
+            "columns": null
+          },
+          "id": "Field_133vab5"
+        },
+        {
+          "text": "###### Anzahl\n{{invest_number}}",
+          "type": "text",
+          "layout": {
+            "row": "Row_030fhd4",
+            "columns": 3
+          },
+          "id": "Field_1hhl92h"
+        },
+        {
+          "text": "###### Ausschreibungswert\n{{invest_amount}} €",
+          "type": "text",
+          "layout": {
+            "row": "Row_030fhd4",
+            "columns": null
+          },
+          "id": "Field_1hpwsjm"
+        }
+      ],
+      "showOutline": true,
+      "type": "group",
+      "layout": {
+        "row": "Row_1a5cy2t",
+        "columns": null
+      },
+      "id": "Field_1acgblu"
+    },
+    {
+      "text": "## Spätestens Lieferbar\nDie Ware/Dienstleistung ist bis zum {{invest_date_delivery}} zu liefern. **Eine Lieferung nach diesem Termin führt zu einer Beendigung des Kaufvertrags.**",
+      "type": "text",
+      "layout": {
+        "row": "Row_0io3vtp",
+        "columns": null
+      },
+      "id": "Field_16l3e64"
+    },
+    {
+      "text": "## Späteste Angebotabgabe\nDas Angbot muss bis zum **{{datetime_offer_deadline}}** abgegeben werden. Angebote, die nach diesem Zeipunkt abgegeben werden, werden nicht mehr berücksichtigt.",
+      "type": "text",
+      "layout": {
+        "row": "Row_16zqa6a",
+        "columns": null
+      },
+      "id": "Field_0mpg0kf"
+    },
+    {
+      "type": "separator",
+      "layout": {
+        "row": "Row_1b3kpb6",
+        "columns": null
+      },
+      "id": "Field_0vtlnl7"
+    },
+    {
+      "label": "Ausschreibung in Ordnung?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_117pq47",
+        "columns": null
+      },
+      "id": "Field_06p4wc5",
+      "key": "checkbox_approve_tender"
+    }
+  ],
+  "type": "default",
+  "id": "Form_approve_tender",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}

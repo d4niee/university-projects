@@ -1,0 +1,22 @@
+{
+  "components": [
+    {
+      "text": "# Verweigerung Investition\nDie Investition wurde verweigert, da er den gültigen Betrag überschritten hat.",
+      "type": "text",
+      "layout": {
+        "row": "Row_10hnpze",
+        "columns": null
+      },
+      "id": "Field_0cm1m63"
+    }
+  ],
+  "type": "default",
+  "id": "Form_invest_decline",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}

@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: camunda-postgres
+    networks:
+      - camunda-86_camunda-platform
+    environment:
+      POSTGRES_DB: camunda_db
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+    ports:
+      - "5432:5432"
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: camunda-pgadmin
+    networks:
+      - camunda-86_camunda-platform
+    environment:
+      PGADMIN_DEFAULT_EMAIL: demo@demo.com
+      PGADMIN_DEFAULT_PASSWORD: demo
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  bpt_investment_process:
+    build: .
+    container_name: bpt_investment_process
+    networks:
+      - camunda-86_camunda-platform
+    depends_on:
+      - postgres
+    environment:
+      - ZEEBE_ADDRESS=zeebe:26500
+      - ZEEBE_CLIENT_ID=zeebe
+      - ZEEBE_CLIENT_SECRET=zecret
+      - CAMUNDA_OAUTH_URL=http://keycloak:18080/auth/realms/camunda-platform/protocol/openid-connect/token
+      - CAMUNDA_TASKLIST_BASE_URL=http://tasklist:8080
+      - CAMUNDA_OPERATE_BASE_URL=http://operate:8080
+      - CAMUNDA_OPTIMIZE_BASE_URL=http://optimize:8090
+      - CAMUNDA_MODELER_BASE_URL=http://web-modeler-webapp:8070/api
+      - CAMUNDA_SECURE_CONNECTION=false
+
+networks:
+  camunda-86_camunda-platform:
+    external: true
+
+volumes:
+  postgres-data:
+  pgadmin-data:

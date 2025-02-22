@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1u17kx2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.30.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:collaboration id="Collaboration_1waezde">
+    <bpmn:participant id="Participant_Abteilung" name="Abteilung" processRef="Process_Start_Event_Demo" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_Start_Event_Demo" isExecutable="true">
+    <bpmn:startEvent id="Event_start_angebot_erhalten" name="angebot erhalten">
+      <bpmn:documentation>erhalte angebot von 1000</bpmn:documentation>
+      <bpmn:outgoing>Flow_0lx7822</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0dk4alc" messageRef="Message_2v450bk" />
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_summe_approval" name="Summe bestätigen">
+      <bpmn:documentation>Einpflegen von dem Angebot</bpmn:documentation>
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="Form_02g4qwv" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0lx7822</bpmn:incoming>
+      <bpmn:outgoing>Flow_0qcssq2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:serviceTask id="Activity_sich_freuen" name="Sich freuen">
+      <bpmn:documentation>Freu dich hurra toll endlich klappt die kacke</bpmn:documentation>
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="service-task-demo" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0qcssq2</bpmn:incoming>
+      <bpmn:outgoing>Flow_176w6a3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="Event_angebot_abgeschlossen" name="Angebot abgeschlossen">
+      <bpmn:incoming>Flow_176w6a3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0lx7822" sourceRef="Event_start_angebot_erhalten" targetRef="Activity_summe_approval" />
+    <bpmn:sequenceFlow id="Flow_0qcssq2" sourceRef="Activity_summe_approval" targetRef="Activity_sich_freuen" />
+    <bpmn:sequenceFlow id="Flow_176w6a3" sourceRef="Activity_sich_freuen" targetRef="Event_angebot_abgeschlossen" />
+  </bpmn:process>
+  <bpmn:message id="Message_2v450bk" name="message_start_event" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1waezde">
+      <bpmndi:BPMNShape id="Participant_0k2s7c9_di" bpmnElement="Participant_Abteilung" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="800" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_12v6mom_di" bpmnElement="Event_start_angebot_erhalten">
+        <dc:Bounds x="242" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="219" y="225" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_17wbr92_di" bpmnElement="Activity_summe_approval">
+        <dc:Bounds x="410" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qqrn8p_di" bpmnElement="Activity_sich_freuen">
+        <dc:Bounds x="650" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1e6e1ex_di" bpmnElement="Event_angebot_abgeschlossen">
+        <dc:Bounds x="842" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="823" y="225" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0lx7822_di" bpmnElement="Flow_0lx7822">
+        <di:waypoint x="278" y="200" />
+        <di:waypoint x="410" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0qcssq2_di" bpmnElement="Flow_0qcssq2">
+        <di:waypoint x="510" y="200" />
+        <di:waypoint x="650" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_176w6a3_di" bpmnElement="Flow_176w6a3">
+        <di:waypoint x="750" y="200" />
+        <di:waypoint x="842" y="200" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

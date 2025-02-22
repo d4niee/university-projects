@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_invest_passing" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.30.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <inputData id="InputData_budget" name="Budget" />
+  <inputData id="InputData_category" name="Kategorie" />
+  <decision id="Decision_table_invest_passing" name="Entscheidung Investition Freigabe">
+    <informationRequirement id="InformationRequirement_12gmk17">
+      <requiredInput href="#InputData_budget" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0scdm44">
+      <requiredInput href="#InputData_category" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0ptyj8r" hitPolicy="FIRST">
+      <input id="InputClause_0y99jdi" label="Budget">
+        <inputExpression id="LiteralExpression_0yu7fjj" typeRef="number">
+          <text>InputVariable_invest_amount</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1gtg2f7" label="Kategorie">
+        <inputExpression id="LiteralExpression_0a57dgj" typeRef="string">
+          <text>InputVariable_invest_category</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0ie6iz3">
+          <text>"maschinen","sonstiges"</text>
+        </inputValues>
+      </input>
+      <output id="OutputClause_1ifa87b" label="Freigabe" name="invest_passing" typeRef="boolean" />
+      <rule id="DecisionRule_003gml5">
+        <inputEntry id="UnaryTests_1xerty6">
+          <text>&gt;200000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_14pgq7z">
+          <text>"maschinen"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rklr9y">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ahwsbr">
+        <inputEntry id="UnaryTests_1uax7q4">
+          <text>&gt;50000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10vaoie">
+          <text>"sonstiges"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1rcmtfb">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0r09f7e">
+        <inputEntry id="UnaryTests_1tbvylr">
+          <text>&gt;500000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gxpnod">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0kqbkux">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ys8486">
+        <inputEntry id="UnaryTests_16i4mz9">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eca1xp">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04hqdc6">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape id="DMNShape_0bkj34c" dmnElementRef="InputData_budget">
+        <dc:Bounds height="45" width="125" x="127" y="238" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18213wj" dmnElementRef="InformationRequirement_12gmk17">
+        <di:waypoint x="190" y="238" />
+        <di:waypoint x="220" y="200" />
+        <di:waypoint x="220" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_098mup2" dmnElementRef="InputData_category">
+        <dc:Bounds height="45" width="125" x="278" y="239" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0mprj01" dmnElementRef="InformationRequirement_0scdm44">
+        <di:waypoint x="341" y="239" />
+        <di:waypoint x="280" y="200" />
+        <di:waypoint x="280" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1pca2ay" dmnElementRef="Decision_table_invest_passing">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

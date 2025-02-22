@@ -1,0 +1,27 @@
+{
+  "name": "bpt_investment_process",
+  "version": "1.0.0",
+  "description": "Camunda Docker (compose) Documentation: https://github.com/camunda/camunda-platform?tab=readme-ov-file#using-docker-compose",
+  "main": ".src/sdk/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.reutlingen-university.de/lambrech/bpt_investment_process.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@camunda8/sdk": "^8.6.21",
+    "dotenv": "^16.4.7",
+    "fs-extra": "^11.3.0",
+    "path": "^0.12.7"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "components": [
+    {
+      "label": "Angebot abgeben?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_06ifpnw",
+        "columns": null
+      },
+      "id": "Field_0mi22kg",
+      "key": "checkbox_create_offer",
+      "defaultValue": true
+    },
+    {
+      "label": "Unternehmen",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0ppqllk",
+        "columns": null
+      },
+      "id": "Field_1ut1yxj",
+      "key": "textfield_company"
+    },
+    {
+      "label": "Artikel",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1cwnwvg",
+        "columns": null
+      },
+      "id": "Field_0y8kfgg",
+      "key": "textfield_article_offer",
+      "conditional": {
+        "hide": "=checkbox_create_offer = false"
+      }
+    },
+    {
+      "label": "Beschreibung",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_10wuwl0",
+        "columns": null
+      },
+      "id": "Field_0wap680",
+      "key": "textarea_article_offer",
+      "conditional": {
+        "hide": "=checkbox_create_offer = false"
+      }
+    },
+    {
+      "label": "Gesamtbetrag Angebot",
+      "type": "number",
+      "layout": {
+        "row": "Row_1exe0cq",
+        "columns": null
+      },
+      "id": "Field_118jut4",
+      "key": "number_amount_offer",
+      "conditional": {
+        "hide": "=checkbox_create_offer = false"
+      }
+    },
+    {
+      "label": "Anzahl",
+      "type": "number",
+      "layout": {
+        "row": "Row_0gf7309",
+        "columns": null
+      },
+      "id": "Field_1jbuius",
+      "key": "number_number_offer",
+      "defaultValue": 1,
+      "conditional": {
+        "hide": "=checkbox_create_offer = false"
+      }
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Lieferdatum",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0lp19bs",
+        "columns": null
+      },
+      "id": "Field_1di06m3",
+      "key": "datetime_delivery_offer",
+      "conditional": {
+        "hide": "=checkbox_create_offer = false"
+      }
+    },
+    {
+      "text": "Das angegebene Lieferdatum entspricht nicht dem Lieferdatum der Ausschreibung",
+      "type": "text",
+      "layout": {
+        "row": "Row_0zgds8k",
+        "columns": null
+      },
+      "id": "Field_01opfmd",
+      "conditional": {
+        "hide": "=datetime_delivery_offer < invest_date_delivery or checkbox_create_offer = false"
+      }
+    },
+    {
+      "label": "Kommentar",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1pqi1pe",
+        "columns": null
+      },
+      "id": "Field_0fdetrv",
+      "key": "textfield_comment",
+      "conditional": {
+        "hide": "=checkbox_create_offer = false"
+      }
+    }
+  ],
+  "type": "default",
+  "id": "Form_offer_creation",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}

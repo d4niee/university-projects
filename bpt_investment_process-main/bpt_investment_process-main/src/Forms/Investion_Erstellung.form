@@ -1,0 +1,132 @@
+{
+  "components": [
+    {
+      "label": "Investionsname",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0l5xzk8",
+        "columns": null
+      },
+      "id": "Field_1vjdcvq",
+      "key": "invest_name",
+      "defaultValue": "Maschine"
+    },
+    {
+      "label": "Investitionsbeschreibung",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_1u591yk",
+        "columns": null
+      },
+      "id": "Field_08u8i2s",
+      "key": "invest_description"
+    },
+    {
+      "label": "Investionsbetrag",
+      "type": "number",
+      "layout": {
+        "row": "Row_1ttb2yz",
+        "columns": null
+      },
+      "id": "Field_1pyikbr",
+      "key": "invest_amount",
+      "decimalDigits": 2
+    },
+    {
+      "label": "Anzahl",
+      "type": "number",
+      "layout": {
+        "row": "Row_0z3bffh",
+        "columns": null
+      },
+      "id": "Field_1ofjvcn",
+      "key": "invest_number",
+      "defaultValue": 1
+    },
+    {
+      "label": "Kategorie",
+      "values": [
+        {
+          "label": "Maschinen",
+          "value": "maschinen"
+        },
+        {
+          "label": "Finanzen",
+          "value": "finanzen"
+        },
+        {
+          "label": "Immobilie",
+          "value": "immobilie"
+        },
+        {
+          "label": "Sonstiges und Büroequipment",
+          "value": "sonstiges"
+        }
+      ],
+      "type": "select",
+      "layout": {
+        "row": "Row_1u31mba",
+        "columns": null
+      },
+      "id": "Field_0gj5hv2",
+      "key": "invest_category"
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Datum der Investition",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_106je81",
+        "columns": null
+      },
+      "id": "Field_14p54fx",
+      "key": "invest_date"
+    },
+    {
+      "subtype": "datetime",
+      "dateLabel": "Späteste Angebotabgabe",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_13wdv3p",
+        "columns": null
+      },
+      "id": "Field_10vtdyz",
+      "key": "datetime_offer_deadline",
+      "timeLabel": "Time",
+      "timeSerializingFormat": "utc_offset",
+      "timeInterval": 15,
+      "use24h": true,
+      "disallowPassedDates": true
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Lieferdatum",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0nfiwd2",
+        "columns": null
+      },
+      "id": "Field_03nyu05",
+      "key": "invest_date_delivery"
+    },
+    {
+      "label": "Kommentar",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0mph6hg",
+        "columns": null
+      },
+      "id": "Field_0cmmbvv",
+      "key": "invest_comment"
+    }
+  ],
+  "type": "default",
+  "id": "invest_form_create",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}

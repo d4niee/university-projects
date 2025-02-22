@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "label": "summe",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_048paqd",
+        "columns": null
+      },
+      "id": "Field_1yqtkaw",
+      "key": "summe",
+      "defaultValue": "1000"
+    }
+  ],
+  "type": "default",
+  "id": "demo_form",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}

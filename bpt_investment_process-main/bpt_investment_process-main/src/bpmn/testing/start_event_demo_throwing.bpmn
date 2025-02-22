@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0os7nsi" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.30.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.6.0">
+  <bpmn:collaboration id="Collaboration_127kbfg">
+    <bpmn:participant id="Participant_Abteilung" name="Abteilung" processRef="Process_abteilung_demo" />
+    <bpmn:participant id="Participant_Automatisiert" name="Automatisiert" processRef="Process_automatisiert_demo" />
+    <bpmn:messageFlow id="Flow_11mikwj" sourceRef="Event_send_sum" targetRef="Event_sum_received" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_abteilung_demo" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Investition festgelegt">
+      <bpmn:documentation>Hier startet der Prozess</bpmn:documentation>
+      <bpmn:outgoing>Flow_0hzayux</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_1dp2axi" name="summe eingeben">
+      <bpmn:documentation>Benutzer gibt eine Summe ein</bpmn:documentation>
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="demo_form" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0hzayux</bpmn:incoming>
+      <bpmn:outgoing>Flow_1wj7mgy</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0hzayux" sourceRef="StartEvent_1" targetRef="Activity_1dp2axi" />
+    <bpmn:sequenceFlow id="Flow_1wj7mgy" sourceRef="Activity_1dp2axi" targetRef="Event_send_sum" />
+    <bpmn:sequenceFlow id="Flow_1iauq2v" sourceRef="Event_send_sum" targetRef="Event_ende_abteilung" />
+    <bpmn:endEvent id="Event_ende_abteilung" name="investitionsdetails versendet">
+      <bpmn:incoming>Flow_1iauq2v</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:intermediateThrowEvent id="Event_send_sum" name="summe senden">
+      <bpmn:documentation>throwing event was die summe an den neuen pool sendet und somit dessen prozess anstößt</bpmn:documentation>
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="send_sum_to_auto" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1wj7mgy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1iauq2v</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_08xxtgh" />
+    </bpmn:intermediateThrowEvent>
+  </bpmn:process>
+  <bpmn:process id="Process_automatisiert_demo" isExecutable="true">
+    <bpmn:startEvent id="Event_sum_received" name="summe erhalten">
+      <bpmn:documentation>Dieser Prozess (pool) startet wenn der Pool der Abteilung das throwing event auslöst</bpmn:documentation>
+      <bpmn:outgoing>Flow_103vylz</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1j9x5ic" messageRef="Message_1ja2rq3" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_103vylz" sourceRef="Event_sum_received" targetRef="Activity_einpflegen" />
+    <bpmn:sequenceFlow id="Flow_1q9pzu9" sourceRef="Activity_einpflegen" targetRef="Activity_kommentar_schreiben" />
+    <bpmn:sequenceFlow id="Flow_07x22i9" sourceRef="Activity_kommentar_schreiben" targetRef="Event_ende_auto" />
+    <bpmn:serviceTask id="Activity_einpflegen" name="summe einpflegen">
+      <bpmn:documentation>demo service task</bpmn:documentation>
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="service-task-demo" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_103vylz</bpmn:incoming>
+      <bpmn:outgoing>Flow_1q9pzu9</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:userTask id="Activity_kommentar_schreiben" name="kommentar schreiben">
+      <bpmn:extensionElements>
+        <zeebe:formDefinition formId="Form_comment" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1q9pzu9</bpmn:incoming>
+      <bpmn:outgoing>Flow_07x22i9</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_ende_auto" name="summe eingepflegt">
+      <bpmn:documentation>ende der automatisierung</bpmn:documentation>
+      <bpmn:incoming>Flow_07x22i9</bpmn:incoming>
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_1ja2rq3" name="message_sum_received" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_127kbfg">
+      <bpmndi:BPMNShape id="Participant_0cdjjr1_di" bpmnElement="Participant_Abteilung" isHorizontal="true">
+        <dc:Bounds x="132" y="82" width="838" height="250" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="212" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="205" y="225" width="50" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dp2axi_di" bpmnElement="Activity_1dp2axi">
+        <dc:Bounds x="330" y="160" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ftuvwm_di" bpmnElement="Event_ende_abteilung">
+        <dc:Bounds x="852" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="830" y="225" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1643aek_di" bpmnElement="Event_send_sum">
+        <dc:Bounds x="612" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="592" y="152" width="76" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0hzayux_di" bpmnElement="Flow_0hzayux">
+        <di:waypoint x="248" y="200" />
+        <di:waypoint x="330" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1wj7mgy_di" bpmnElement="Flow_1wj7mgy">
+        <di:waypoint x="430" y="200" />
+        <di:waypoint x="612" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1iauq2v_di" bpmnElement="Flow_1iauq2v">
+        <di:waypoint x="648" y="200" />
+        <di:waypoint x="852" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_1ywl11w_di" bpmnElement="Participant_Automatisiert" isHorizontal="true">
+        <dc:Bounds x="132" y="390" width="838" height="260" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ozmuvk_di" bpmnElement="Event_sum_received">
+        <dc:Bounds x="202" y="502" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="181" y="545" width="79" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lmuw8v_di" bpmnElement="Activity_einpflegen">
+        <dc:Bounds x="410" y="480" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_110ciw3_di" bpmnElement="Activity_kommentar_schreiben">
+        <dc:Bounds x="600" y="480" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0p1hx4f_di" bpmnElement="Event_ende_auto">
+        <dc:Bounds x="842" y="502" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="833" y="545" width="55" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_103vylz_di" bpmnElement="Flow_103vylz">
+        <di:waypoint x="238" y="520" />
+        <di:waypoint x="410" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q9pzu9_di" bpmnElement="Flow_1q9pzu9">
+        <di:waypoint x="510" y="520" />
+        <di:waypoint x="600" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07x22i9_di" bpmnElement="Flow_07x22i9">
+        <di:waypoint x="700" y="520" />
+        <di:waypoint x="842" y="520" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11mikwj_di" bpmnElement="Flow_11mikwj">
+        <di:waypoint x="630" y="218" />
+        <di:waypoint x="630" y="360" />
+        <di:waypoint x="220" y="360" />
+        <di:waypoint x="220" y="502" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

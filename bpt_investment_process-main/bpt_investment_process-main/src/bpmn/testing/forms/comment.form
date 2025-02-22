@@ -1,0 +1,25 @@
+{
+  "components": [
+    {
+      "label": "Kommentar schreiben",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1ekivsp",
+        "columns": null
+      },
+      "id": "Field_07pkpzw",
+      "key": "textfield_comment",
+      "description": "Hier kannst du noch einen kommentar schreiben oder einfach leer lassen",
+      "defaultValue": "mein kommentar hier..."
+    }
+  ],
+  "type": "default",
+  "id": "Form_comment",
+  "executionPlatform": "Camunda Cloud",
+  "executionPlatformVersion": "8.6.0",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.30.0"
+  },
+  "schemaVersion": 17
+}
