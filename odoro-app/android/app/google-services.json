@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "42904725267",
+    "project_id": "odoro-351114",
+    "storage_bucket": "odoro-351114.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:42904725267:android:d5676043f4c4ecae9edce6",
+        "android_client_info": {
+          "package_name": "com.odoro.odoro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "42904725267-109o6e88cu499edlm6q8eul3nn0uuuss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBof_H_15L3s9sZC3xW9yqcAvEpfIswgP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "42904725267-109o6e88cu499edlm6q8eul3nn0uuuss.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "42904725267-q56pm9ub3eqlvqifvmg9erp4bcki28c2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.odoro.odoro"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
