@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "Snake AI"
+version = "1.0.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [{include = "snake_ai"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pre-commit = "^3.2.2"
+black = "^23.3.0"
+isort = "^5.12.0"
+pylint = "^2.17.2"
+pygame = "^2.4.0"
+numpy = "^1.24.3"
+torch = "^2.0.1"
+torchvision = "^0.15.2"
+matplotlib = "^3.7.1"
+ipython = "^8.14.0"
+opencv-python = "^4.7.0.72"
+
+[tool.black]
+line-length = 120
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
